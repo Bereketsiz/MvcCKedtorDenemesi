@@ -1,0 +1,56 @@
+﻿@model MvcCKedtorDenemesi.Models.Urun
+
+@{
+    ViewBag.Title = "Ürün Sil";
+}
+
+<h2>Ürün Sil</h2>
+
+<h3>Bu Kaydı Silmek İstediğinizden Eminmisiniz?</h3>
+<div>
+    <h4>Ürün Sil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunResim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunResim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detay)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Ürünler", "Index")
+        </div>
+    }
+</div>

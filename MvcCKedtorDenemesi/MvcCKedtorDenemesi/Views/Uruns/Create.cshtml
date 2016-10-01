@@ -1,0 +1,81 @@
+﻿@model MvcCKedtorDenemesi.Models.Urun
+
+@{
+    ViewBag.Title = "Yeni Kayıt";
+}
+
+<h2>Ürün Ekle</h2>
+
+
+@using (Html.BeginForm("Create", "Uruns", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Urun Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UrunAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.UrunAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UrunAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fiyat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Fiyat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UrunResim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <input type="file" accept=".jpg,.jpeg,.png" name="UrunResim" id="UrunResim"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Detay)
+                @Html.ValidationMessageFor(model => model.Detay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-3">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Ürünler", "Index")
+</div>
+
+@section scripts{
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances["Detay"];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace("Detay", {
+            enterMode: CKEDITOR.ENTER_BR
+
+        });
+
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")');
+
+
+    </script>
+    
+    }

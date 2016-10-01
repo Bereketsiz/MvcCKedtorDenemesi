@@ -1,0 +1,51 @@
+﻿@model MvcCKedtorDenemesi.Models.Urun
+
+@{
+    ViewBag.Title = "Detay";
+}
+
+<h2>Detay</h2>
+
+<div>
+    <h4>Urun Detay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunResim)
+        </dt>
+
+        <dd>
+            <img src="~/Content/Upload/UrunResim/@Model.UrunResim" alt="" width="250" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detay)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Detay)
+       
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Ürünler", "Index")
+</p>
